@@ -1,0 +1,59 @@
+1class Solution {
+2    public String modifyString(String st) {
+3        // StringBuilder s = new StringBuilder();
+4
+5        // for(int i = 0; i < st.length(); i++) {
+6        //     s.append(st.charAt(i));
+7        // }
+8
+9        // int freq[] = new int[26];
+10
+11        // for(int i = 0; i < st.length(); i++) {
+12        //     if(st.charAt(i) != '?') {
+13        //         freq[st.charAt(i) - 'a']++;
+14        //     }
+15        // }
+16
+17        // String ss = "";
+18
+19        // for(int i = 0; i < freq.length; i++) {
+20        //     if(freq[i] == 0) {
+21        //         ss += (char)('a' + i);
+22        //         break;
+23        //     }
+24        // }
+25
+26        // for(int i = 0; i < s.length(); i++) {
+27        //     if(s.charAt(i) == '?') {
+28        //         s.setCharAt(i, ss.charAt(0));
+29        //     }
+30        // }
+31
+32        // return s.toString();
+33        StringBuilder s = new StringBuilder();
+34
+35        for(int i = 0; i < st.length(); i++) {
+36            s.append(st.charAt(i));
+37        }
+38
+39        for(int i = 0; i < s.length(); i++) {
+40
+41            if(s.charAt(i) == '?') {
+42
+43                for(char ch = 'a'; ch <= 'z'; ch++) {
+44
+45                    if((i > 0 && s.charAt(i - 1) == ch) ||
+46                       (i < s.length() - 1 && s.charAt(i + 1) == ch)) {
+47                        continue;
+48                    }
+49
+50                    s.setCharAt(i, ch);
+51                    break;
+52                }
+53            }
+54        }
+55
+56        return s.toString();
+57    }
+58}
+59
